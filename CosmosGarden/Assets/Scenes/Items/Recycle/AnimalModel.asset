@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: AnimalModel
   m_EditorClassIdentifier: 
   itemName: "\uB3D9\uBB3C \uBAA8\uD615"
-  itemInfo: 
+  itemInfo: "\uC5B8\uC81C\uBD10\uB3C4 \uADC0\uC5FD\uB2E4"
   Amount: 0
-  Price: 0
+  Price: 7000
   itemType: 1
   sprite: {fileID: 0}
   crafting:

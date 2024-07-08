@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: BrokenBowl
   m_EditorClassIdentifier: 
   itemName: "\uAE68\uC9C4 \uADF8\uB987"
-  itemInfo: 
+  itemInfo: "\uAE68\uC9C4 \uADF8\uB987. \uC7AC\uC0AC\uC6A9 \uD560 \uC218 \uC788\uC744\uAE4C?"
   Amount: 0
   Price: 0
   itemType: 0
   sprite: {fileID: 0}
+  crafting: []

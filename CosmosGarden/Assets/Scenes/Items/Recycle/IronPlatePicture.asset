@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: IronPlatePicture
   m_EditorClassIdentifier: 
   itemName: "\uCCA0\uD310 \uADF8\uB9BC"
-  itemInfo: 
+  itemInfo: "\uB354 \uC608\uC058\uAC8C \uADF8\uB9AC\uACE0 \uC2F6\uC5C8\uB294\uB370..."
   Amount: 0
-  Price: 0
+  Price: 3000
   itemType: 1
   sprite: {fileID: 0}
   crafting:

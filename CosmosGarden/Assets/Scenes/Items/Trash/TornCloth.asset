@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855746cca49238f4397d481800f1356d, type: 3}
   m_Name: TornCloth
   m_EditorClassIdentifier: 
-  itemName: "\uCC22\uC5B4\uC9C4 "
-  itemInfo: 
+  itemName: "\uCC22\uC5B4\uC9C4 \uCC9C"
+  itemInfo: "\uB204\uAD70\uAC00\uC758 \uC637\uC774\uC5C8\uB358 \uCC9C\uC870\uAC01.
+    \uC544\uC9C1 \uC0AC\uC6A9\uD560\uB9CC \uD558\uB2E4."
   Amount: 0
   Price: 0
   itemType: 0

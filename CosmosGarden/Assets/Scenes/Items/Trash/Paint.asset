@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Paint
   m_EditorClassIdentifier: 
   itemName: "\uD398\uC778\uD2B8 \uC870\uAC01"
-  itemInfo: 
+  itemInfo: "\uBB34\uC5B8\uAC00\uC5D0\uC11C \uB5A8\uC5B4\uC838\uB098\uC628 \uBCFC\uD3FC\uC5C6\uB294
+    \uC870\uAC01."
   Amount: 0
   Price: 0
   itemType: 0

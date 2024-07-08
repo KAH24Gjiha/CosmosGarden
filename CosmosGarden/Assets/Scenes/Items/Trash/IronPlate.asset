@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: IronPlate
   m_EditorClassIdentifier: 
   itemName: "\uB179\uC2A8 \uCCA0\uD310"
-  itemInfo: 
+  itemInfo: "\uC5B4\uB514\uC120\uAC00 \uB0A0\uC544\uC628 \uCCA0\uD310. \uC774 \uC18D\uC5D4
+    \uC5EC\uD589 \uC774\uC57C\uAE30\uAC00 \uAC00\uB4DD\uD558\uB2E4."
   Amount: 0
   Price: 0
   itemType: 0

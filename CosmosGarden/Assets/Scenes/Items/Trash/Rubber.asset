@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855746cca49238f4397d481800f1356d, type: 3}
   m_Name: Rubber
   m_EditorClassIdentifier: 
-  itemName: "\uACE0"
-  itemInfo: 
+  itemName: "\uACE0\uBB34"
+  itemInfo: "\uC624\uB9AC\uC778\uD615\uC774 \uC0DD\uAC01\uB09C\uB2E4."
   Amount: 0
   Price: 0
   itemType: 0
