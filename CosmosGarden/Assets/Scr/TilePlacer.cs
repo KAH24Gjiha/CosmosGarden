@@ -3,8 +3,8 @@ using UnityEngine.Tilemaps;
 
 public class TilePlacer : MonoBehaviour
 {
-    public Tilemap tilemap;
-    public Tile tile;
+    [SerializeField] public Tilemap tilemap;
+    [SerializeField] public Tile tile;
 
     void Update()
     {
