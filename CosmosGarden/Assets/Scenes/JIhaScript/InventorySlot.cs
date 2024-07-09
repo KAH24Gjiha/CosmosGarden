@@ -17,7 +17,7 @@ public class InventorySlot : MonoBehaviour
 #if UNITY_EDITOR
     private void Awake()
     {
-        //DataManager.Instance.LoadGameData();
+        DataManager.Instance.LoadGameData();
         slots = slotParent.GetComponentsInChildren<InvenSlot>();
     }
 #endif
@@ -29,18 +29,18 @@ public class InventorySlot : MonoBehaviour
 
     public void FreshSlot()
     {
-        DeleteItem();
         int i = 0;
+        int SlotIndex = 0;
         for (; i < slots.Length && i < slots.Length; i++)
         {
             slots[i].item = null;
         }
-        Debug.Log(DataManager.Instance.gameData.Inventory.Count);
         for (i = 0; i < DataManager.Instance.gameData.Inventory.Count; i++)
         {
-            if (DataManager.Instance.gameData.Inventory[i] != null)
+            if (DataManager.Instance.gameData.Inventory[i] != null && DataManager.Instance.gameData.Inventory[i].Amount > 0)
             {
-                slots[i].item = DataManager.Instance.gameData.Inventory[i];
+                slots[SlotIndex].item = DataManager.Instance.gameData.Inventory[i];
+                SlotIndex++;
             }
         }
         sellItem = SellSlot.GetComponentsInChildren<SellItem>();
@@ -53,15 +53,10 @@ public class InventorySlot : MonoBehaviour
         DataManager.Instance.gameData.Inventory.Add(_item);
     }
 
-    public void DeleteItem()
+    public IEnumerator addFresh()
     {
-        for (int i = 0; i < DataManager.Instance.gameData.Inventory.Count; i++)
-        {
-            if (DataManager.Instance.gameData.Inventory[i] != null && DataManager.Instance.gameData.Inventory[i].Amount <= 0)
-                DataManager.Instance.gameData.Inventory.Remove(DataManager.Instance.gameData.Inventory[i]);
-            
-        }
-        
+        yield return new WaitForSeconds(0.1f);
+        FreshSlot();
     }
     
 }
