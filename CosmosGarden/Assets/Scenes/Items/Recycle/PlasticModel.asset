@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PlasticModel
   m_EditorClassIdentifier: 
   itemName: "\uD50C\uB77C\uC2A4\uD2F1 \uBAA8\uD615"
-  itemInfo: 
+  itemInfo: "\uD50C\uB77C\uC2A4\uD2F1\uC758 \uBCC0\uC2E0\uC740 \uBB34\uC8C4"
   Amount: 0
-  Price: 0
+  Price: 3000
   itemType: 1
   sprite: {fileID: 0}
   crafting:
-  - "\uD50C\uB77C\uC2A4\uD2F1,5"
+  - "\uD50C\uB77C\uC2A4\uD2F1 \uC870\uAC01,5"

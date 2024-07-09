@@ -10,7 +10,7 @@ public class InvenSlot : MonoBehaviour
     [SerializeField] public Image image;
     public TMP_Text text;
     //public Sprite spr;
-    private Item _item;
+    public Item _item;
 
     void Awake()
     {
@@ -32,9 +32,10 @@ public class InvenSlot : MonoBehaviour
             else
             {
                 //image.sprite = spr;
-                //image.color = new Color(1, 1, 1, 0);
+                image.color = new Color(1, 1, 1, 0);
                 //image.color = new Color(1, 1, 1, 1);
-                image.sprite = Resources.Load<Sprite>("Clear");
+                text.text = " ";
+                //image.sprite = Resources.Load<Sprite>("Clear");
 
 
             }

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: ScrewVillage
   m_EditorClassIdentifier: 
   itemName: "\uB098\uC0AC \uB9C8\uC744"
-  itemInfo: 
-  Amount: 2
-  Price: 0
+  itemInfo: "\uC5B8\uC820\uAC00 \uC774 \uD589\uC131\uB3C4 \uC774\uB807\uAC8C \uB420
+    \uC218 \uC788\uACA0\uC9C0?"
+  Amount: 0
+  Price: 10000
   itemType: 1
   sprite: {fileID: 0}
   crafting:

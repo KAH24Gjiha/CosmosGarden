@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Screw
   m_EditorClassIdentifier: 
   itemName: "\uB098\uC0AC"
-  itemInfo: 
-  Amount: 4
+  itemInfo: "\uC2ED\uC790\uD615 \uB098\uC0AC. \uB9CE\uC740 \uACF3\uC744 \uC5EC\uD589\uD558\uB2E4
+    \uC774\uACF3\uC5D0 \uC815\uCC29\uD588\uB2E4."
+  Amount: 0
   Price: 0
   itemType: 0
   sprite: {fileID: 0}

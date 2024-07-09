@@ -11,6 +11,9 @@ public class InventorySlot : MonoBehaviour
     [SerializeField]
     private InvenSlot[] slots;
 
+    public SellItem[] sellItem;
+    public GameObject SellSlot;
+
 #if UNITY_EDITOR
     private void Awake()
     {
@@ -20,7 +23,7 @@ public class InventorySlot : MonoBehaviour
 #endif
     void Start()
     {
-        StartCoroutine("addFresh");
+        FreshSlot();
     }
 
 
@@ -38,9 +41,11 @@ public class InventorySlot : MonoBehaviour
             if (DataManager.Instance.gameData.Inventory[i] != null)
             {
                 slots[i].item = DataManager.Instance.gameData.Inventory[i];
-                Debug.Log("아이템 : " + DataManager.Instance.gameData.Inventory[i].itemName + " " + DataManager.Instance.gameData.Inventory[i].Amount);
             }
         }
+        sellItem = SellSlot.GetComponentsInChildren<SellItem>();
+
+        for (int j = 0; j < sellItem.Length; j++) sellItem[j].SlotUpdate();
     }
 
     public void AddItem(Item _item)
@@ -53,121 +58,10 @@ public class InventorySlot : MonoBehaviour
         for (int i = 0; i < DataManager.Instance.gameData.Inventory.Count; i++)
         {
             if (DataManager.Instance.gameData.Inventory[i] != null && DataManager.Instance.gameData.Inventory[i].Amount <= 0)
-            {
-                //Debug.Log("지워짐" + DataManager.Instance.gameData.InvenList[i]);
                 DataManager.Instance.gameData.Inventory.Remove(DataManager.Instance.gameData.Inventory[i]);
-                
-            }
+            
         }
         
     }
-    IEnumerator addFresh()
-    {
-        yield return new WaitForFixedUpdate();
-        FreshSlot();
-    }
+    
 }
-
-
-/*using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-
-public class InventorySlot : MonoBehaviour
-{
-    public List<Item> Inventory = new List<Item>();
-
-    public ItemDatabase itemData;
-    public Image image;
-    public Sprite ClearImage;
-    public TMP_Text text;
-
-    public int preCount;
-    // Start is called before the first frame update
-    void Start()
-    {
-        itemData = GameObject.Find("ItemDatabase").GetComponent<ItemDatabase>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(Inventory.Count == preCount)
-        {
-            Debug.Log("변동 없음");
-        }
-        else
-        {
-            preCount = Inventory.Count;
-            addItem();
-            deleteItem();
-            ShowInventory();
-            
-        }
-    }
-    public void addItem()
-    {
-        Debug.Log("추가됨");
-        for (int i = 1; i < itemData.itemDB.Count; i++)
-        {
-
-            if (itemData.itemDB[i].count > 0)
-            {
-                if (Inventory.Contains(itemData.itemDB[i]))
-                {
-                    Debug.Log("중복");
-                }
-                else
-                {
-                    Item item = new Item();
-                    item.ItemName = itemData.itemDB[i].ItemName;
-                    item.category = itemData.itemDB[i].category;
-                    item.ItemImage = itemData.itemDB[i].ItemImage;
-                    item.UnLocked = itemData.itemDB[i].UnLocked;
-                    item.count = itemData.itemDB[i].count;
-                    item.ItemNumber = itemData.itemDB[i].ItemNumber;
-                    item.recipy = itemData.itemDB[i].recipy;
-                    Inventory.Add(item);
-                }
-            }
-        }
-    }
-    public void deleteItem()
-    {
-        for (int i = 0; i < Inventory.Count; i++)
-        {
-            if (Inventory[i].count <= 0)
-            {
-                Inventory.RemoveAt(i);
-            }
-        }
-    }
-    public void ShowInventory()
-    {
-        int n = 0;
-        for (int i = 1; i < Inventory.Count; i++)
-        {
-            string ObjName = "slot (" + n + ")";
-            image = GameObject.Find(ObjName).transform.Find("Image").GetComponent<Image>();
-            text = GameObject.Find(ObjName).transform.Find("Text").GetComponent<TMP_Text>();
-
-            image.sprite = ClearImage;
-            text.text = "   ";
-        }
-            
-        for (int i = 1; i < Inventory.Count; i++)
-        {
-            
-            string ObjName = "slot (" + n + ")";
-            image = GameObject.Find(ObjName).transform.Find("Image").GetComponent<Image>();
-            text = GameObject.Find(ObjName).transform.Find("Text").GetComponent<TMP_Text>();
-
-            image.sprite = Inventory[i].ItemImage;
-            text.text = Inventory[i].count.ToString();
-            n++;
-        }
-    }
-}
-*/

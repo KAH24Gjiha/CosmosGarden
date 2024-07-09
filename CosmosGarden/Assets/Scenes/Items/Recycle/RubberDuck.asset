@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: RubberDuck
   m_EditorClassIdentifier: 
   itemName: "\uB7EC\uBC84\uB355"
-  itemInfo: 
+  itemInfo: "\uAF65!"
   Amount: 0
-  Price: 0
+  Price: 2000
   itemType: 1
   sprite: {fileID: 0}
   crafting:

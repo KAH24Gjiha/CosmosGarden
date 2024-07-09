@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Plastic
   m_EditorClassIdentifier: 
   itemName: "\uD50C\uB77C\uC2A4\uD2F1 \uC870\uAC01"
-  itemInfo: 
-  Amount: 0
+  itemInfo: "\uD658\uACBD\uC624\uC5FC\uC758 \uC6D0\uC778."
+  Amount: 14
   Price: 0
   itemType: 0
   sprite: {fileID: 0}
