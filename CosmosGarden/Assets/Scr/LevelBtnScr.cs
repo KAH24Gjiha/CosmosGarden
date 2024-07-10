@@ -7,49 +7,51 @@ public class LevelBtnScr : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI LvPriceText;
     [SerializeField] TextMeshProUGUI LvChangeText;
+    public GameData data;
 
-    int LvPrice = 200;          //
-    int playerLV = 1;           //
-    int playerCoin = 1000000;   // 그냥 임시로 멤버변수로 만들어놓음
+    private void Start()
+    {
+        data = DataManager.Instance.gameData;
+    }
     public void OnBtnCkick()
     {
-        if(playerCoin < LvPrice)
+        if(data.Coin < data.LvPrice)
         {
             Debug.Log("소지금 부족");
             return;
         }
-        playerCoin -= LvPrice;
-        playerLV++;
-        Debug.Log(playerCoin);
+        data.Coin -= data.LvPrice;
+        data.playerLV++;
+        Debug.Log(data.Coin);
 
         NeedLvPriceCalculator();
     }
     public void NeedLvPriceCalculator()
     {
-        int LvPer10 = playerLV / 10;
+        int LvPer10 = data.playerLV / 10;
         switch (LvPer10)
         {
             case 0:
-                LvPrice += 100; break;
+                data.LvPrice += 100; break;
             case 1:
-                LvPrice += 200; break;
+                data.LvPrice += 200; break;
             case 2:
-                if (playerLV < 25) LvPrice += 200;
-                else LvPrice += 350;
+                if (data.playerLV < 25) data.LvPrice += 200;
+                else data.LvPrice += 350;
                 break;
 
             case 11:
-                if (playerLV < 115) LvPrice += 350;
-                else LvPrice += 450;
+                if (data.playerLV < 115) data.LvPrice += 350;
+                else data.LvPrice += 450;
                 break;
 
             default:
-                if(playerLV < 120)
+                if(data.playerLV < 120)
                 {
                     if (LvPer10 % 2 == 1)
-                        LvPrice += 200;
+                        data.LvPrice += 200;
                     else
-                        LvPrice += 350;
+                        data.LvPrice += 350;
                 }
                 break;
         }
@@ -58,7 +60,7 @@ public class LevelBtnScr : MonoBehaviour
 
     public void UpdateLvBtn()
     {
-        LvPriceText.text = $"-{LvPrice}G";
-        LvChangeText.text = $"{playerLV} -> {playerLV + 1}";
+        LvPriceText.text = $"-{data.LvPrice}G";
+        LvChangeText.text = $"{data.playerLV} -> {data.playerLV + 1}";
     }
 }
