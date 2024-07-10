@@ -1,25 +1,26 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.WSA;
 
 public class TileController : MonoBehaviour
 {
-    //public Vector3Int dataOnTiles;
-    [SerializeField] public Tilemap _TileMap;
-    [SerializeField] public Tilemap _PlaceTileMap;
-    [SerializeField] public Grid _Grid;
-    //[SerializeField] public Grid _PlaceGrid;
+    private EditTile _EditTile;
+
+    public Tilemap _OrignMap;
+    public Tilemap _ChangedDisplayMap;
+    public Grid _Grid;
+
     public TileBase _Tile;
-    public List<Vector3Int> LandTile;
-    public List<Vector3Int> LandPlaceTile;
+    public List<Vector3Int> OriginTilePos;
+    public List<Vector3Int> ChangedTilePos;
 
     Vector3Int ClickPos;
 
     public void Start()
     {
-        LandTile = isTileExist(_TileMap);
+        _EditTile = GetComponent<EditTile>();
+        _Grid = _OrignMap.layoutGrid;
+        _ChangedDisplayMap = _Grid.transform.GetChild(0).GetComponent<Tilemap>();
     }
 
     private void Update()
@@ -28,27 +29,30 @@ public class TileController : MonoBehaviour
         {
             ClickPos = _Grid.WorldToCell(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
                 Input.mousePosition.y)));
-            LandPlaceTile = isTileExist(_PlaceTileMap);
-            PlaceLand(_Tile);
+            ChangedTilePos = _EditTile.TileExistPos(_ChangedDisplayMap);
+            Debug.Log(ClickPos);
+        PlaceLand(_Tile);
+            
         }
     }
 
     public void PlaceLand(TileBase tile)
     {
 
-        if (!isSamePos(LandTile, ClickPos)) //1ÀÌ¶û ¾È°ãÄ§ 
+        if (!isSamePos(OriginTilePos, ClickPos)) //1ÀÌ¶û ¾È°ãÄ§ 
         {
-            if (!isSamePos(LandPlaceTile, ClickPos)) //2 ¾È°ãÄ§
+            if (!isSamePos(ChangedTilePos, ClickPos)) //2 ¾È°ãÄ§
             {
-                _PlaceTileMap.SetTile(ClickPos, tile);
+                _ChangedDisplayMap.SetTile(ClickPos, tile);
             }
             else //2 °ãÄ§
             {
-                LandTile.Add(ClickPos);
-                SetTileM(tile);
+                OriginTilePos.Add(ClickPos); 
+                _OrignMap.SetTile(ClickPos, tile);
+
             }
-            foreach (Vector3Int pos in LandPlaceTile)
-                _PlaceTileMap.SetTile(pos, null);
+            foreach (Vector3Int pos in ChangedTilePos)
+                _ChangedDisplayMap.SetTile(pos, null);
         }
         else Debug.Log("is already exist"); //°ãÄ§
     }
@@ -64,27 +68,4 @@ public class TileController : MonoBehaviour
         }
         return false;
     }
-
-    public void SetTileM(TileBase tile)
-    {
-        //LandTile.Sort();
-        foreach (Vector3Int pos in LandTile)
-            _TileMap.SetTile(pos, tile);
-    }
-
-    public List<Vector3Int> isTileExist(Tilemap tilemap)
-    {
-        List<Vector3Int> tileExist = new List<Vector3Int>();
-
-        foreach (Vector3Int pos in tilemap.cellBounds.allPositionsWithin)
-        {
-            if(tilemap.GetTile(pos) !=  null)
-            {
-                tileExist.Add(pos);
-            }
-        }
-        return tileExist;
-    }
-
-
 }
