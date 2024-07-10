@@ -26,7 +26,7 @@ public class LevelBtnScr : MonoBehaviour
     }
     public void NeedLvPriceCalculator()
     {
-        int LvPer10 = (playerLV) / 10;
+        int LvPer10 = playerLV / 10;
         switch (LvPer10)
         {
             case 0:
