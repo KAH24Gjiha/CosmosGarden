@@ -8809,12 +8809,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d0dc2c1d754451f4ea5066d689eb4c68, type: 3}
   - {fileID: 21300000, guid: 7bb93bd677e2dc84999f5e9586117437, type: 3}
   - {fileID: 0}
+  - {fileID: 21300000, guid: 371073ab3999ef34ca82fbb7768928ca, type: 3}
+  - {fileID: 21300000, guid: 0b68834e1ddd47542b3d9ce47abc233d, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 3acf7f1c6b74cc042a9e794adec08a9c, type: 3}
+  - {fileID: 21300000, guid: a7b9fd808f58ac64f997d3f9fe0c504e, type: 3}
+  - {fileID: 21300000, guid: e0647294cc598e54aa311c7319cf6b42, type: 3}
   - {fileID: 0}
   crafting:
   - /
@@ -8825,14 +8825,15 @@ MonoBehaviour:
   - /
   - /
   - /
-  - "\uAE68\uC9C4 \uADF8\uB987,1/\uB179\uC2A8 \uCCA0\uD310,1"
-  - "\uB179\uC2A8 \uCCA0\uD310,1/\uD398\uC778\uD2B8 \uC870\uAC01,1"
-  - "\uCC22\uC5B4\uC9C4 \uCC9C,1/\uCCA0\uADFC,1"
-  - "\uD50C\uB77C\uC2A4\uD2F1 \uC870\uAC01,5"
-  - "\uCCA0\uADFC,1/\uD50C\uB77C\uC2A4\uD2F1 \uC870\uAC01,1/\uCC22\uC5B4\uC9C4 \uCC9C,1"
-  - "\uACE0\uBB34,1/\uD398\uC778\uD2B8 \uC870\uAC01,1"
-  - "\uD50C\uB77C\uC2A4\uD2F1 \uC870\uAC01,3/\uD398\uC778\uD2B8 \uC870\uAC01,2"
-  - "\uB098\uC0AC,20"
+  - "\uAE68\uC9C4 \uADF8\uB987,1/\uCCA0\uADFC,40"
+  - "\uB179\uC2A8 \uCCA0\uD310,1/\uD398\uC778\uD2B8 \uC870\uAC01,50"
+  - "\uCC22\uC5B4\uC9C4 \uCC9C,15/\uCCA0\uADFC,50"
+  - "\uD50C\uB77C\uC2A4\uD2F1 \uC870\uAC01,50"
+  - "\uCCA0\uADFC,50/\uD50C\uB77C\uC2A4\uD2F1 \uC870\uAC01,40/\uCC22\uC5B4\uC9C4
+    \uCC9C,50"
+  - "\uACE0\uBB34,50/\uD398\uC778\uD2B8 \uC870\uAC01,70"
+  - "\uD50C\uB77C\uC2A4\uD2F1 \uC870\uAC01,50/\uD398\uC778\uD2B8 \uC870\uAC01,40"
+  - "\uB098\uC0AC,350"
 --- !u!4 &629180639
 Transform:
   m_ObjectHideFlags: 0
