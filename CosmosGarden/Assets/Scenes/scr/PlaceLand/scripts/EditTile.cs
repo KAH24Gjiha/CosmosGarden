@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 public class EditTile : MonoBehaviour
 {
+    private TileController _TileController;
 
     [SerializeField] public Tilemap LandMap;
     [SerializeField] public Tilemap ObjMap;
@@ -15,11 +16,10 @@ public class EditTile : MonoBehaviour
 
     void Start()
     {
-        TileController _TileController = new TileController();
+        _TileController = GetComponent<TileController>();
         LandPos = TileExistPos(LandMap);
         ObjPos = TileExistPos(ObjMap);
 
-        _TileController._Tile = NewTile;
         if (isEditLand)
         {
             _TileController._OrignMap = LandMap;
@@ -30,13 +30,10 @@ public class EditTile : MonoBehaviour
             _TileController._OrignMap = ObjMap;
             _TileController.OriginTilePos = ObjPos;
         }
+        _TileController._Tile = NewTile;
+        _TileController._Start();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public List<Vector3Int> TileExistPos(Tilemap tilemap)
     {
         List<Vector3Int> tileExist = new List<Vector3Int>();
