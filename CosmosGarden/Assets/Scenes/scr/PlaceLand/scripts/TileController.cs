@@ -16,11 +16,16 @@ public class TileController : MonoBehaviour
 
     Vector3Int ClickPos;
 
-    public void Start()
+    public void _Start()
     {
         _EditTile = GetComponent<EditTile>();
         _Grid = _OrignMap.layoutGrid;
         _ChangedDisplayMap = _Grid.transform.GetChild(0).GetComponent<Tilemap>();
+        foreach(Vector3Int pos in OriginTilePos)
+        {
+            Debug.Log(pos);
+            _OrignMap.SetTile(pos, _Tile);
+        }
     }
 
     private void Update()
@@ -30,22 +35,39 @@ public class TileController : MonoBehaviour
             ClickPos = _Grid.WorldToCell(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
                 Input.mousePosition.y)));
             ChangedTilePos = _EditTile.TileExistPos(_ChangedDisplayMap);
-            Debug.Log(ClickPos);
-        PlaceLand(_Tile);
-            
+
+            if (_EditTile.isEditLand) PlaceTile(_Tile);
+            else CheckPlaceObj();
         }
     }
 
-    public void PlaceLand(TileBase tile)
+    public void CheckPlaceObj()
+    {
+        List<Vector3Int> LandExistPos = _EditTile.LandPos;
+        Debug.Log(LandExistPos);
+        foreach(Vector3Int pos in LandExistPos)
+        {
+            Debug.Log($"{pos} / {ClickPos}");
+            if (pos.x*7 +5 < ClickPos.x && ClickPos.x < pos.x*7 +11
+                && pos.y*7 +5 < ClickPos.y && ClickPos.y < pos.y*7 +11)
+            {
+                PlaceTile(_Tile);
+                return;
+            }
+        }
+        Debug.Log("Out of range");
+    }
+
+    public void PlaceTile(TileBase tile)
     {
 
-        if (!isSamePos(OriginTilePos, ClickPos)) //1ÀÌ¶û ¾È°ãÄ§ 
+        if (!isSamePos(OriginTilePos, ClickPos)) 
         {
-            if (!isSamePos(ChangedTilePos, ClickPos)) //2 ¾È°ãÄ§
+            if (!isSamePos(ChangedTilePos, ClickPos)) 
             {
                 _ChangedDisplayMap.SetTile(ClickPos, tile);
             }
-            else //2 °ãÄ§
+            else 
             {
                 OriginTilePos.Add(ClickPos); 
                 _OrignMap.SetTile(ClickPos, tile);
@@ -54,7 +76,7 @@ public class TileController : MonoBehaviour
             foreach (Vector3Int pos in ChangedTilePos)
                 _ChangedDisplayMap.SetTile(pos, null);
         }
-        else Debug.Log("is already exist"); //°ãÄ§
+        else Debug.Log("is already exist"); 
     }
 
     private bool isSamePos(List<Vector3Int> T, Vector3Int tPos)
