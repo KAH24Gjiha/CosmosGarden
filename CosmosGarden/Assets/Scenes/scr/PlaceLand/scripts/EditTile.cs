@@ -38,7 +38,7 @@ public class EditTile : MonoBehaviour
         _TileController = GetComponent<TileController>();
         LandPos = TileExistPos(LandMap);
         ObjPos = TileExistPos(ObjMap);
-
+        Debug.Log(isEditLand);
         if (isEditLand)
         {
             _TileController._OrignMap = LandMap;
@@ -49,6 +49,7 @@ public class EditTile : MonoBehaviour
             _TileController._OrignMap = ObjMap;
             _TileController.OriginTilePos = ObjPos;
         }
+        _TileController._Start();
         _TileController._Tile = NewTile;
         _TileController.StartEdit();
     }
