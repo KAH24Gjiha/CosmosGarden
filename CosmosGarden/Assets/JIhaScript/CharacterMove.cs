@@ -18,8 +18,7 @@ public class CharacterMove : MonoBehaviour
         StartCoroutine(Direction());
     }
     public void Move()
-    {
-        Debug.Log("움직이기");
+    { 
         Vector3 velocity = new Vector3(directX, directY, 0) * Time.deltaTime * 0.3f;
 
         this.transform.position += velocity;
@@ -32,7 +31,6 @@ public class CharacterMove : MonoBehaviour
     }
     public void BackMove()
     {
-        Debug.Log("뒷걸음");
         Vector3 velocity = new Vector3(directX, directY, 0) * Time.deltaTime * 0.3f;
 
         this.transform.position -= velocity;
@@ -59,13 +57,11 @@ public class CharacterMove : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("콜라이더 닿음");
         if (collision.transform.CompareTag("land")) Move();
         else BackMove();
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("콜라이더 닿음");
         if (collision.transform.CompareTag("land")) Move();
         else BackMove();
     }

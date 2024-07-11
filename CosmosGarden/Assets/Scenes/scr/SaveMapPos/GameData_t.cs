@@ -1,10 +1,8 @@
-﻿public class GameData_t
+﻿public class GameData_t1
 {
     public int[] LandPosX;
     public int[] LandPosY;
-    public int[] LandPosZ;
 
     public int[] ObjPosX;
     public int[] ObjPosY;
-    public int[] ObjPosZ;
 }
