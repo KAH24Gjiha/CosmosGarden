@@ -13,10 +13,13 @@ public class CameraMove : MonoBehaviour
     float m_fSpeed = 0.1f;       // 변경 속도를 설정합니다 
     float m_fFieldOfView = 60f;     // 카메라의 FieldOfView의 기본값을 60으로 정합니다.
 
+    public GameObject background;
+
     void Update()
     {
         CheckTouch();
         MoveCam();
+        ObjMove();
     }
     private void MoveCam()
     {
@@ -27,6 +30,12 @@ public class CameraMove : MonoBehaviour
                 Camera.main.transform.position.x - touch.deltaPosition.x,
                 Camera.main.transform.position.y - touch.deltaPosition.y,
                 Camera.main.transform.position.z);
+
+            background.transform.position = new Vector3
+                (
+                background.transform.position.x - touch.deltaPosition.x,
+                background.transform.position.y - touch.deltaPosition.y,
+                background.transform.position.z);
         }
     }
     void CheckTouch()
@@ -52,7 +61,23 @@ public class CameraMove : MonoBehaviour
             m_fFieldOfView = Mathf.Clamp(m_fFieldOfView, 20.0f, 100.0f);
 
             Camera.main.fieldOfView = m_fFieldOfView;
+            
 
+        }
+    }
+    void ObjMove()
+    {
+        if (Input.touchCount == 2)
+        {
+            Vector2 prevPos0 = Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition;
+            Vector2 prevPos1 = Input.GetTouch(1).position - Input.GetTouch(1).deltaPosition;
+
+            float prevDistance = (prevPos0 - prevPos1).magnitude;
+            float currDistance = (Input.GetTouch(0).position - Input.GetTouch(1).position).magnitude;
+
+            float diff = currDistance - prevDistance;
+
+            this.transform.localScale += this.transform.localScale * Time.deltaTime * diff * m_fFieldOfView;
         }
     }
 }
