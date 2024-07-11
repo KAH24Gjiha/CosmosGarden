@@ -12,6 +12,7 @@ public class LevelBtnScr : MonoBehaviour
     private void Start()
     {
         data = DataManager.Instance.gameData;
+        UpdateLvBtn();
     }
     public void OnBtnCkick()
     {

@@ -11,10 +11,11 @@ public class ShowTrashInfo : MonoBehaviour
     public TMP_Text infoText;
 
     public Item item;
+    public Sprite clear;
 
     void Start()
     {
-        
+        Init_Info();
     }
 
     // Update is called once per frame
@@ -28,5 +29,11 @@ public class ShowTrashInfo : MonoBehaviour
             nameText.text = item.itemName;
             infoText.text = item.itemInfo;
         }
+    }
+    public void Init_Info()
+    {
+        image.sprite = clear;
+        nameText.text = " ";
+        infoText.text = " ";
     }
 }

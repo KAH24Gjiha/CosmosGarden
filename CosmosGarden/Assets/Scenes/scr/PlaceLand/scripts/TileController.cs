@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -10,9 +11,13 @@ public class TileController : MonoBehaviour
     public Tilemap _ChangedDisplayMap;
     public Grid _Grid;
 
+    public UIController UIController;
+
     public TileBase _Tile;
     public List<Vector3Int> OriginTilePos;
     public List<Vector3Int> ChangedTilePos;
+
+    public bool isEdits = false;
 
     Vector3Int ClickPos;
 
@@ -27,18 +32,28 @@ public class TileController : MonoBehaviour
             _OrignMap.SetTile(pos, _Tile);
         }
     }
-
-    private void Update()
+    public void StartEdit()
     {
-        if (Input.GetMouseButtonDown(0))
+        isEdits = true;
+        StartCoroutine(Edits());
+    }
+    
+    public IEnumerator Edits()
+    {
+        while (isEdits)
         {
-            ClickPos = _Grid.WorldToCell(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
-                Input.mousePosition.y)));
-            ChangedTilePos = _EditTile.TileExistPos(_ChangedDisplayMap);
+            yield return new WaitForFixedUpdate();
+            if (Input.GetMouseButtonDown(0))
+            {
+                ClickPos = _Grid.WorldToCell(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
+                    Input.mousePosition.y)));
+                ChangedTilePos = _EditTile.TileExistPos(_ChangedDisplayMap);
 
-            if (_EditTile.isEditLand) PlaceTile(_Tile);
-            else CheckPlaceObj();
+                if (_EditTile.isEditLand) PlaceTile(_Tile);
+                else CheckPlaceObj();
+            }
         }
+        UIController.UIOn(5);
     }
 
     public void CheckPlaceObj()
@@ -71,12 +86,13 @@ public class TileController : MonoBehaviour
             {
                 OriginTilePos.Add(ClickPos); 
                 _OrignMap.SetTile(ClickPos, tile);
+                isEdits = false;
 
             }
             foreach (Vector3Int pos in ChangedTilePos)
                 _ChangedDisplayMap.SetTile(pos, null);
         }
-        else Debug.Log("is already exist"); 
+        else Debug.Log("is already exist");
     }
 
     private bool isSamePos(List<Vector3Int> T, Vector3Int tPos)

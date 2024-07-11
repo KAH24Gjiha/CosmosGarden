@@ -39,8 +39,8 @@ public class SellItem : MonoBehaviour
         item = DataManager.Instance.gameData.Inventory[itemIndex];
 
         nameText.text = item.itemName;
-        amountText.text = item.Amount.ToString();
-        priceText.text = item.Price.ToString();
+        amountText.text = "¼ö·® : " + item.Amount.ToString();
+        priceText.text = "+" + item.Price.ToString() + "G";
         image.sprite = item.sprite;
 
         if (item.Amount <= 0) sellBtn.gameObject.GetComponent<Image>().color = new Color(0.7f, 0.7f, 0.7f, 1);

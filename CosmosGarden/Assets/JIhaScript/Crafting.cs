@@ -15,9 +15,19 @@ public class Crafting : MonoBehaviour
     public TMP_Text craftingCondition;
     public Image itemImage;
 
+    public Sprite clear;
+
     void Start()
     {
         itemList = DataManager.Instance.gameData;
+        Init_UIInfo();
+    }
+    public void Init_UIInfo()
+    {
+        itemImage.sprite = clear;
+        itemName.text = "";
+        itemInfo.text = "";
+        craftingCondition.text = "";
     }
     public void SetUIInfo()
     {

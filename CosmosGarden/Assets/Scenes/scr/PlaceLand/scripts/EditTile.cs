@@ -14,7 +14,26 @@ public class EditTile : MonoBehaviour
     public List<Vector3Int> LandPos;
     public List<Vector3Int> ObjPos;
 
-    void Start()
+    private void Start()
+    {
+        _TileController = GetComponent<TileController>();
+        //LandPos = TileExistPos(LandMap);
+        //ObjPos = TileExistPos(ObjMap);
+
+        if (isEditLand)
+        {
+            _TileController._OrignMap = LandMap;
+            _TileController.OriginTilePos = LandPos;
+        }
+        else
+        {
+            _TileController._OrignMap = ObjMap;
+            _TileController.OriginTilePos = ObjPos;
+        }
+        _TileController._Tile = NewTile;
+        _TileController._Start();
+    }
+    public void IsSettings()
     {
         _TileController = GetComponent<TileController>();
         LandPos = TileExistPos(LandMap);
@@ -31,9 +50,9 @@ public class EditTile : MonoBehaviour
             _TileController.OriginTilePos = ObjPos;
         }
         _TileController._Tile = NewTile;
-        _TileController._Start();
+        _TileController.StartEdit();
     }
-
+    
     public List<Vector3Int> TileExistPos(Tilemap tilemap)
     {
         List<Vector3Int> tileExist = new List<Vector3Int>();

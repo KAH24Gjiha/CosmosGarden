@@ -17,4 +17,5 @@ public class SelectItem : MonoBehaviour
         CraftingObj.SetUIInfo();
     }
 
+
 }
