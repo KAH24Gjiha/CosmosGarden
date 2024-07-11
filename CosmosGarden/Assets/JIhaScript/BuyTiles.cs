@@ -24,6 +24,7 @@ public class BuyTiles : MonoBehaviour
 
             editTile.NewTile = tile;
             editTile.isEditLand = isLand;
+            Debug.Log($"{isLand}, {editTile.isEditLand}");
             editTile.IsSettings();
 
             UIController.UIOff(4);

@@ -23,14 +23,15 @@ public class TileController : MonoBehaviour
 
     public void _Start()
     {
-        _EditTile = GetComponent<EditTile>();
-        _Grid = _OrignMap.layoutGrid;
-        _ChangedDisplayMap = _Grid.transform.GetChild(0).GetComponent<Tilemap>();
         foreach(Vector3Int pos in OriginTilePos)
         {
             Debug.Log(pos);
             _OrignMap.SetTile(pos, _Tile);
         }
+        Debug.Log(_OrignMap.GetComponent<Tilemap>().name);
+        _EditTile = GetComponent<EditTile>();
+        _Grid = _OrignMap.layoutGrid;
+        _ChangedDisplayMap = _Grid.transform.GetChild(0).GetComponent<Tilemap>();
     }
     public void StartEdit()
     {
@@ -42,7 +43,7 @@ public class TileController : MonoBehaviour
     {
         while (isEdits)
         {
-            yield return new WaitForFixedUpdate();
+            yield return null;//new WaitForFixedUpdate();
             if (Input.GetMouseButtonDown(0))
             {
                 ClickPos = _Grid.WorldToCell(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
@@ -59,12 +60,12 @@ public class TileController : MonoBehaviour
     public void CheckPlaceObj()
     {
         List<Vector3Int> LandExistPos = _EditTile.LandPos;
-        Debug.Log(LandExistPos);
+        //Debug.Log(LandExistPos);
         foreach(Vector3Int pos in LandExistPos)
         {
             Debug.Log($"{pos} / {ClickPos}");
-            if (pos.x*7 +5 < ClickPos.x && ClickPos.x < pos.x*7 +11
-                && pos.y*7 +5 < ClickPos.y && ClickPos.y < pos.y*7 +11)
+            if (pos.x*7 -30 < ClickPos.x && ClickPos.x < pos.x*7 -24
+                && pos.y*7 -30 < ClickPos.y && ClickPos.y < pos.y*7 -24)
             {
                 PlaceTile(_Tile);
                 return;

@@ -20,7 +20,7 @@ public class Clicker : MonoBehaviour
     {
         for(int i = 0; i < data.clickIncrease.Count; i++)
         {
-            Debug.Log((int)(data.playerLV / 10));
+            //Debug.Log((int)(data.playerLV / 10));
             data.Inventory[i].Amount += data.Level_Trash[(int)(data.playerLV / 10)];
             inventory.FreshSlot();
         }
